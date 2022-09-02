@@ -12,30 +12,131 @@ class DoublyCircularLinkedList:
 
     def add_at_tail(self, data) -> bool:
         # Write code here
-        temp = self.head
-        if temp is null:
+        t = self.head
+        if t is null:
             self.head=Node(data)
             self.count+=1
+            return True
         else:
-            while temp.next is not head 
-            temp = temp.next
-            temp.next=node(data)
-            node(data)
+            while t.next is not head 
+            t = t.next
+            new node = node(data)
+            t.next=new node
+            self.count+=1
+            return True
 
     def add_at_head(self, data) -> bool:
         # Write code here
+        if self.head is None:
+            self.head = Node(data)
+            self.count = 1
+            return True
+        else:
+            new node= Node(data)
+            t = self.head
+        while temp.next!=self.head:
+            t=t.next
+        new node .next = self.head
+        new node .previous = temp 
+        t.next = new node
+        self.head = new node
+        self.count +=1
+        return True
+        
 
     def add_at_index(self, index, data) -> bool:
         # Write code here
+        if (index > =self.count)or(index<0):
+            return False
+        if self.head is None:
+            self.count = 1
+            self.head = Node(data)
+            return True
+        else:
+            t = self.head
+            if index == 0:
+                t = t.previous
+                else:
+                    for _in range
+                    t = t.next
+            t.next.previous = Node(data)
+            t.next.previous.next, t.next.previous.previous = t.next, t
+            t.next = t.next.previous
+            if index == 0:
+                self.head = self.head.previous
+            self.count += 1
+            return True 
 
     def get(self, index) -> int:
         # Write code here
+         if (index >= self.count) or (index < 0):
+            return False
+        if self.head is None:
+            self.count = 1
+            self.head = Node(data)
+            return True
+        else:
+            t = self.head
+            if index == 0:
+                t = t.previous
+            else:
+                for _ in range(index - 1):
+                    t = t.next
+            t.next.previous = Node(data)
+            t.next.previous.next, t.next.previous.previous = t.next, t
+            t.next = t.next.previous
+            if index == 0:
+                self.head = self.head.previous
+            self.count += 1
+            return True        
+
+    def get(self, index) -> int:
+        # Write code here
+        if (index >= self.count) or (index < 0):
+            return -1
+        if self.head is None:
+            return None
+        else:
+            t = self.head
+            for _ in range(index):
+                t = t.next
+            return t.data        
 
     def delete_at_index(self, index) -> bool:
         # Write code here
+         if (index >= self.count) | (index < 0):
+            return False
+        if self.count == 1:
+            self.head = None
+            self.count -= 1
+            return True
+
+        target = self.head
+        for _ in range(index):
+            target = target.next
+
+        if target is self.head:
+            self.head = self.head.next
+
+        target.previous.next, target.next.previous = target.next, target.previous
+        self.count -= 1
+        return True        
+
 
     def get_previous_next(self, index) -> list:
         # Write code here
+           if (index >= self.count) or (index < 0) or self.head is None:
+            return [-1]
+        else:
+            if self.count == 1:
+                return [self.head.previous.data, self.head.next.data]
+            else:
+                my_counter = 0
+                t = self.head
+                while my_counter < index:
+                    t = t.next
+                    my_counter += 1
+                return [tt.previous.data, t.next.data]        
 
 
 # Do not change the following code
