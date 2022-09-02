@@ -136,7 +136,7 @@ class DoublyCircularLinkedList:
                 while my_counter < index:
                     t = t.next
                     my_counter += 1
-                return [tt.previous.data, t.next.data]        
+                return [t.previous.data, t.next.data]        
 
 
 # Do not change the following code
