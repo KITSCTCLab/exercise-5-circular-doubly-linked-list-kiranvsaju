@@ -16,7 +16,7 @@ class DoublyCircularLinkedList:
         if t is None:
             self.head = Node(data)
             self.count += 1
-            return True
+            
         else:
             while t.next is not self.head:
                 t = t.next
