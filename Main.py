@@ -1,28 +1,28 @@
 class Node:
-    def __init__(self, data=None):
+    def _init_(self, data=None):
         self.data = data
         self.previous = self
         self.next = self
 
 
 class DoublyCircularLinkedList:
-    def __init__(self):
+    def _init_(self):
         self.head = None
         self.count = 0
 
-     def add_at_tail(self, data) -> bool:
+    def add_at_tail(self, data) -> bool:
         # Write code here
-        t = self.head
-        if t is None:
+        temp = self.head
+        if temp is None:
             self.head = Node(data)
             self.count += 1
-            
+            return True
         else:
-            while t.next is not self.head:
-                t = t.next
+            while temp.next is not self.head:
+                temp = temp.next
             new_node = Node(data)
-            t.next = new_node
-            new_node.previous = t
+            temp.next = new_node
+            new_node.previous = temp
             new_node.next = self.head
             self.count += 1
             return True
@@ -35,12 +35,12 @@ class DoublyCircularLinkedList:
             return True
         else:
             new_node = Node(data)
-            t = self.head
-        while t.next != self.head:
-            t = t.next
+            temp = self.head
+        while temp.next != self.head:
+            temp = temp.next
         new_node.next = self.head
-        new_node.previous = t
-        t.next = new_node
+        new_node.previous = temp
+        temp.next = new_node
         self.head = new_node
         self.count += 1
         return True        
@@ -54,15 +54,15 @@ class DoublyCircularLinkedList:
             self.head = Node(data)
             return True
         else:
-            t = self.head
+            temp = self.head
             if index == 0:
-                t = t.previous
+                temp = temp.previous
             else:
                 for _ in range(index - 1):
-                    t = t.next
-            t.next.previous = Node(data)
-            t.next.previous.next, t.next.previous.previous = t.next, t
-            t.next = t.next.previous
+                    temp = temp.next
+            temp.next.previous = Node(data)
+            temp.next.previous.next, temp.next.previous.previous = temp.next, temp
+            temp.next = temp.next.previous
             if index == 0:
                 self.head = self.head.previous
             self.count += 1
@@ -75,10 +75,10 @@ class DoublyCircularLinkedList:
         if self.head is None:
             return None
         else:
-            t = self.head
+            temp = self.head
             for _ in range(index):
-                t = t.next
-            return t.data        
+                temp = temp.next
+            return temp.data        
 
     def delete_at_index(self, index) -> bool:
         # Write code here
@@ -109,11 +109,11 @@ class DoublyCircularLinkedList:
                 return [self.head.previous.data, self.head.next.data]
             else:
                 my_counter = 0
-                t = self.head
+                temp = self.head
                 while my_counter < index:
-                    t = t.next
+                    temp = temp.next
                     my_counter += 1
-                return [t.previous.data, t.next.data]          
+                return [temp.previous.data, temp.next.data]           
 
 
 # Do not change the following code
